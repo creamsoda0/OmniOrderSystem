@@ -1,12 +1,11 @@
-// Order-Service/src/main/java/com/omni/order/Main.java (Order Service의 메인 클래스)
-package com.omni.order;
+// Product-Service/src/main/java/com/omni/order/Main.java (패키지 이름이 com.omni.order로 되어 있는 것도 수정해야 합니다.)
+package com.omni.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
+// @EnableFeignClients 제거 (이 서비스는 호출 주체가 아님)
 @SpringBootApplication
-@EnableFeignClients // Feign Client 활성화 (Order Service에만 필요)
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

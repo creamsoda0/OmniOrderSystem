@@ -12,3 +12,5 @@ spring:
       # 서버가 실행될 때 DB 스키마를 자동 생성/업데이트 (개발 시 유용, 운영 시 주의)
       ddl-auto: update
     show-sql: true # 실행되는 쿼리를 콘솔에 표시
+
+

@@ -1,4 +1,10 @@
 // Product Service
+package com.omni.product;
+
+import jakarta.persistence.*;
+import lombok.Data; //Lombok 사용
+
+@Data
 @Entity
 @Table (name = "PRODUCTS")
 public class Product {

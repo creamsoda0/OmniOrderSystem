@@ -1,6 +1,12 @@
-// Order Service
+package com.omni.order;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+// com.omni.order.Order Service
+@Data
 @Entity
-@Table(name = "Orders")
+@Table(name = "ORDERS")
 public class Order {
 
     @Id
