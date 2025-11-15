@@ -1,0 +1,14 @@
+# application.yml (Order Service, Product Service 공통 적용)
+spring:
+  datasource:
+    # 1. Oracle 접속 드라이버 설정
+    driver-class-name: oracle.jdbc.OracleDriver
+    # 2. 접속 URL (사용자의 로컬/Docker 환경에 맞게 변경해야 함)
+    url: jdbc:oracle:thin:@localhost:1521:XE # 예시 (XE 버전을 로컬 1521 포트로 사용 시)
+    username: omni
+    password: omni
+  jpa:
+    hibernate:
+      # 서버가 실행될 때 DB 스키마를 자동 생성/업데이트 (개발 시 유용, 운영 시 주의)
+      ddl-auto: update
+    show-sql: true # 실행되는 쿼리를 콘솔에 표시
