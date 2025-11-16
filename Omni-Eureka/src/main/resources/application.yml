@@ -1,0 +1,13 @@
+server:
+  port: 8761 # 유레카 서버 기본 포트
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # 유레카 서버는 다른 유레카 서버를 찾을 필요가 없음
+    register-with-eureka: false
+    # 유레카 서버는 다른 서비스를 찾을 필요가 없음
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

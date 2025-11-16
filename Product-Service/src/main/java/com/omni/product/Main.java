@@ -3,9 +3,10 @@ package com.omni.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-// @EnableFeignClients 제거 (이 서비스는 호출 주체가 아님)
 @SpringBootApplication
+@EnableDiscoveryClient // 유레카 클라이언트 활성화
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

@@ -9,6 +9,14 @@ plugins {
     // kotlin("jvm") version "1.9.23"
 }
 
+dependencyManagement {
+    imports {
+        // Spring Boot 3.x에 호환되는 Spring Cloud 버전을 사용해야 합니다.
+        // 2022.0.x 버전대 사용 예시
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2022.0.4")
+    }
+}
+
 group = "com.omni.order"
 version = "1.0-SNAPSHOT"
 
@@ -34,6 +42,9 @@ dependencies {
     // Lombok (필수)
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+
+    // Eureka 의존성 추가
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 
     // 테스트 관련
     testImplementation("org.springframework.boot:spring-boot-starter-test")

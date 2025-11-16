@@ -1,20 +1,36 @@
-# application.yml (com.omni.order.Order Service, Product Service 공통 적용)
+# application.yml (Order Service)
+
+# --- [ Spring 설정 블록: 모든 spring 관련 설정을 여기에 넣습니다. ] ---
 spring:
+  # 1. Datasource 설정
   datasource:
-    # 1. Oracle 접속 드라이버 설정
     driver-class-name: oracle.jdbc.OracleDriver
-    # 2. 접속 URL (사용자의 로컬/Docker 환경에 맞게 변경해야 함)
-    url: jdbc:oracle:thin:@localhost:1521:XE # 예시 (XE 버전을 로컬 1521 포트로 사용 시)
+    url: jdbc:oracle:thin:@localhost:1521:XE # DB 접속 정보 확인
     username: omni
     password: omni
+
+  # 2. JPA 설정
   jpa:
     hibernate:
-      # 서버가 실행될 때 DB 스키마를 자동 생성/업데이트 (개발 시 유용, 운영 시 주의)
       ddl-auto: update
-    show-sql: true # 실행되는 쿼리를 콘솔에 표시
+    show-sql: true
 
-  # --- [ Redis 설정 ] ---
+  # 3. Application Name 설정
+  application:
+    name: order-service
+
+  # 4. Redis 설정 (spring 하위에 data:redis 구조로 배치)
   data:
     redis:
-      host: YOUR_REDIS_HOST # 예: localhost (또는 Redis 서버의 IP/도메인)
-      port: 6379 # Redis 기본 포트 (변경했다면 해당 포트로 수정)
+      host: localhost
+      port: 6379
+
+# --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
+
+server:
+  port: 8081 # Order Service 포트
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

@@ -2,9 +2,8 @@ plugins {
     id("java") // Java 기본 플러그인
 
     // ⚠️ Spring Boot 프로젝트임을 알리는 필수 플러그인 2개 추가
-    id("org.springframework.boot") version "3.3.0" // 사용 중인 Spring Boot 버전으로 지정
-    id("io.spring.dependency-management") version "1.1.5" // 의존성 관리 플러그인
-
+    id("org.springframework.boot") version "3.1.12"
+    id("io.spring.dependency-management") version "1.1.4"
     // Kotlin DSL 사용 시 추가
     // kotlin("jvm") version "1.9.23"
 }
@@ -49,6 +48,9 @@ dependencies {
     // Lombok (선택 사항: Getter/Setter 자동 생성)
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+
+    // Eureka 의존성 추가
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 
     // 테스트 관련
     testImplementation("org.springframework.boot:spring-boot-starter-test")
