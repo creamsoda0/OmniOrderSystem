@@ -1,0 +1,16 @@
+# Eureka Server의 application.yml
+spring:
+  application:
+    name: eureka-server # 애플리케이션 이름
+
+server:
+  port: 8761 # Eureka 서버 기본 포트
+
+eureka:
+  client:
+    # ⚠️ 중요: Eureka 서버는 자기 자신에게 등록하거나 (register-with-eureka)
+    # 다른 Eureka 서버에서 정보를 가져오지 (fetch-registry) 않도록 설정합니다.
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/ # 서버의 주소

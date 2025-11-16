@@ -17,7 +17,7 @@ spring:
 
   # 3. Application Name 설정
   application:
-    name: order-service
+    name: product-service
 
   # 4. Redis 설정 (spring 하위에 data:redis 구조로 배치)
   data:
@@ -28,7 +28,7 @@ spring:
 # --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
 
 server:
-  port: 8081 # Order Service 포트
+  port: 8082 # Product Service 포트
 
 eureka:
   client:

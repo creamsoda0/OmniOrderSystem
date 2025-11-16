@@ -1,0 +1,39 @@
+CREATE TABLE PRODUCTS (
+    -- 상품 고유 ID (PK)
+    ID NUMBER(19) PRIMARY KEY, 
+    -- 상품 이름 (필수)
+    NAME VARCHAR2(255) NOT NULL,
+    -- 재고 수량 (필수, 0보다 커야 함)
+    STOCK NUMBER(10) NOT NULL,
+    -- 가격 (선택 사항)
+    PRICE NUMBER(10) 
+);
+
+-- 시퀀스 생성 (JPA의 GenerationType.IDENTITY 대체)
+-- Oracle에서 ID 자동 생성을 위해 시퀀스가 필요합니다.
+CREATE SEQUENCE PRODUCTS_SEQ START WITH 1 INCREMENT BY 1;
+
+
+CREATE TABLE ORDERS (
+    -- 주문 고유 ID (PK)
+    ID NUMBER(19) PRIMARY KEY, 
+    -- 주문한 상품 ID (FK 역할, Product Service의 ID 참조)
+    PRODUCT_ID NUMBER(19) NOT NULL, 
+    -- 주문 수량 (필수)
+    QUANTITY NUMBER(10) NOT NULL,
+    -- 주문 총액
+    TOTAL_PRICE NUMBER(10),
+    -- 주문 상태 (예: 'COMPLETED', 'PENDING')
+    ORDER_STATUS VARCHAR2(50) NOT NULL,
+    -- 주문 생성 시각
+    CREATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+);
+
+-- 시퀀스 생성
+CREATE SEQUENCE ORDERS_SEQ START WITH 1 INCREMENT BY 1;
+
+-- 상품 A 삽입 (ID=1, 재고 100개, 가격 50000원)
+INSERT INTO PRODUCTS (ID, NAME, STOCK, PRICE) 
+VALUES (PRODUCTS_SEQ.NEXTVAL, '테스트 상품 A', 100, 50000);
+
+COMMIT;

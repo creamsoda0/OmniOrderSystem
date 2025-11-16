@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "product-service")
 public interface ProductClient {
-
     /**
      * Product Service의 재고 차감 API (POST /products/deduct-stock)를 호출합니다.
      */

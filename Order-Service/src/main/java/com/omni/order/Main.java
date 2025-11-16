@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient // 유레카 클라이언트 활성화
+@EnableFeignClients
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

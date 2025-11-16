@@ -9,11 +9,14 @@ spring:
     username: omni
     password: omni
 
+
   # 2. JPA 설정
+  # JPA (Hibernate) 설정
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: update # 개발 단계에서 테이블 자동 생성/갱신 (주의 필요)
+    show-sql: true # SQL 쿼리를 로그에 출력
+    database-platform: org.hibernate.dialect.OracleDialect # 사용하는 Oracle Dialect
 
   # 3. Application Name 설정
   application:
@@ -28,7 +31,7 @@ spring:
 # --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
 
 server:
-  port: 8082 # Product Service 포트
+  port: 8081 # Order Service 포트
 
 eureka:
   client:
