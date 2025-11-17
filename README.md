@@ -1,4 +1,14 @@
 🛍️ OmniOrderSystem: 실시간 주문 처리 시스템
+현재 진행중인 프로젝트(미완성)입니다. 
+
+2025.11.17 업데이트 사항: 주문 처리 로직 MVP가 만들어짐
+MSA + OpenFeign 구조 완성
+테스트 DB완성
+주문시 재고 차감 로직 완성
+사용자 interface 간단 구현
+Docker에 Redis 설치 완료
+
+
 🧑‍💻 프로젝트 개요 (Project Overview)
 본 프로젝트는 1인 개발로 구축된 마이크로서비스 아키텍처(MSA) 기반의 실시간 주문 처리 시스템입니다. 동시성 제어, 서비스 간 통신, 컨테이너 오케스트레이션(Kubernetes)을 중점적으로 다루며, 대규모 트래픽 환경에서도 안정적인 서비스 운영이 가능하도록 설계 및 구현되었습니다.
 모든 서비스는 Docker 컨테이너화되어 운영됩니다.
@@ -32,12 +42,6 @@ Backend	Java
 	2. Order Service는 Eureka Server를 통해 Product Service의 위치를 확인합니다.
 	3. Order Service는 Feign Client를 사용하여 Product Service의 재고 차감 API를 호출합니다.
 	4. 재고 차감 성공 응답을 받은 후, Order Service는 주문 정보를 Oracle DB에 최종 저장합니다.
-
-✨ 주요 구현 내용 및 기술적 성과
-	• 실시간 동시성 문제 해결: 주문 트랜잭션 시 Redis Lock 또는 Oracle 동시성 제어 기능을 적용하여 대규모 트래픽에서 발생하는 재고 불일치(Race Condition)를 최소화했습니다.
-	• 고가용성 확보 (High Availability): 모든 서비스를 Dockerized하고 Kubernetes에 배포하여, 특정 인스턴스 장애 시 자동 복구 및 수평 확장을 구현했습니다.
-	• 개발 생산성 증대: CI/CD 파이프라인을 구축하여 코드 병합(Merge)부터 컨테이너 이미지 생성 및 배포까지 자동화했습니다.
-	• MSA 통신 구현: Spring Cloud Eureka와 OpenFeign을 활용하여 서비스 디스커버리 기반의 효율적인 서비스 간 통신 구조를 확립했습니다.
 
 ⚙️ 실행 방법 (Getting Started)
 1. 환경 요구사항
