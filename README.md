@@ -1,12 +1,13 @@
 🛍️ OmniOrderSystem: 실시간 주문 처리 시스템
 현재 진행중인 프로젝트(미완성)입니다. 
 
-2025.11.17 업데이트 사항: 주문 처리 로직 MVP가 만들어짐
-MSA + OpenFeign 구조 완성
-테스트 DB완성
-주문시 재고 차감 로직 완성
-사용자 interface 간단 구현
-Docker에 Redis 설치 완료
+2025.11.17 업데이트 사항: 
+주문 처리 로직 MVP가 만들어짐  
+MSA + OpenFeign 구조 완성  
+테스트 DB완성  
+주문시 재고 차감 로직 완성  
+사용자 interface 간단 구현  
+Docker에 Redis 설치 완료  
 
 
 🧑‍💻 프로젝트 개요 (Project Overview)
