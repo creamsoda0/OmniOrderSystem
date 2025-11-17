@@ -26,7 +26,7 @@ Backend	Java
 | Container | Docker | Latest |
 | Orchestration | Kubernetes | Latest |
 | API | RESTful API | |
-🛠️ 기술 배지 (Badges)
+
 
 
 🏛️ 시스템 아키텍처 및 데이터 흐름
