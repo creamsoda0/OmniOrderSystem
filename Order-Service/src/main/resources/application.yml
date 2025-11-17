@@ -14,7 +14,7 @@ spring:
   # JPA (Hibernate) 설정
   jpa:
     hibernate:
-      ddl-auto: update # 개발 단계에서 테이블 자동 생성/갱신 (주의 필요)
+      ddl-auto: none # 개발 단계에서 테이블 자동 생성/갱신 (주의 필요)
     show-sql: true # SQL 쿼리를 로그에 출력
     database-platform: org.hibernate.dialect.OracleDialect # 사용하는 Oracle Dialect
 

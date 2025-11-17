@@ -6,11 +6,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "product-service")
+@FeignClient(name = "product-service", path = "/products")
 public interface ProductClient {
     /**
      * Product Service의 재고 차감 API (POST /products/deduct-stock)를 호출합니다.
      */
-    @PostMapping("/products/deduct-stock")
+    @PostMapping("/deduct-stock")
     String deductStock(@RequestBody StockUpdateRequestDto request);
 }

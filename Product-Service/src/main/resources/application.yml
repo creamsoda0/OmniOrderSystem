@@ -12,7 +12,7 @@ spring:
   # 2. JPA 설정
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
 
   # 3. Application Name 설정

@@ -10,7 +10,12 @@ import lombok.Data;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
+    @SequenceGenerator(
+            name = "order_seq_gen",
+            sequenceName = "ORDERS_SEQ", // DB 시퀀스 이름
+            allocationSize = 1
+    )
     private Long id; //주문 ID
 
     private Long productId; // 주문한 상품 ID (Product Service의 ID 참조)
