@@ -6,6 +6,7 @@ import com.omni.order.ProductClient;
 import com.omni.order.dto.OrderCreationRequest;
 import com.omni.order.dto.StockUpdateRequestDto;
 import com.omni.order.repository.OrderRepository;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,23 +20,43 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository; // 방금 작성한 Repository 주입
 
-    @Transactional // 주문 생성은 트랜잭션으로 묶여야 합니다.
+    @Transactional
     public Order createOrder(OrderCreationRequest request) {
 
-        // 1. 재고 차감 요청 DTO 생성
         StockUpdateRequestDto stockRequest = new StockUpdateRequestDto();
         stockRequest.setProductId(request.getProductId());
         stockRequest.setQuantity(request.getQuantity());
 
-        // 2. Product Service의 재고 차감 API 호출 (MSA 통신)
         try {
-            // Feign Client 호출. 재고 부족 시 Product Service에서 400 에러를 반환
-            // Feign은 이 에러를 FeignException으로 변환합니다.
-            productClient.deductStock(stockRequest);
+            // 1. Feign Client 호출 (성공 시 200 OK)
+            String productResponse = productClient.deductStock(stockRequest);
+
+            // Product Service가 항상 200 OK를 반환하고 응답 메시지로 성공/실패를 알려주는 경우에만 이 로직을 사용
+            if (!productResponse.contains("재고 차감 성공")) {
+                // 400이 아닌 200을 받았지만, 로직상 실패 메시지인 경우
+                throw new RuntimeException("상품 서비스 로직 실패: " + productResponse);
+            }
+
+        } catch (FeignException e) {
+            // 2. FeignException 발생 시 (4xx 또는 5xx 오류)
+            System.err.println("Feign 통신 오류: " + e.getMessage());
+
+            if (e.status() == 400) {
+                // 재고 부족 (400 Bad Request)인 경우
+                // Feign Client 응답 본문에서 상세 오류 메시지를 추출할 수 있음 (e.contentUTF8())
+                throw new RuntimeException("주문 실패: 재고 부족", e);
+            } else if (e.status() == 404) {
+                // 상품 없음 (404 Not Found)인 경우
+                throw new RuntimeException("주문 실패: 상품 찾을 수 없음", e);
+            } else {
+                // 기타 서버 오류 (5xx) 또는 예상치 못한 오류
+                throw new RuntimeException("주문 실패: 상품 서비스 오류", e);
+            }
+
         } catch (Exception e) {
-            // 재고 차감 실패 시 (Product Service에서 에러 반환), 주문 생성 트랜잭션 롤백
-            System.err.println("재고 차감 실패: " + e.getMessage());
-            throw new RuntimeException("주문 실패: 재고 확보 불가");
+            // 네트워크, I/O 등 Feign 통신 외의 예외 처리
+            System.err.println("네트워크 또는 기타 예외: " + e.getMessage());
+            throw new RuntimeException("주문 실패: 통신 불가", e);
         }
 
         // 3. 재고 차감 성공 시, 주문 정보 저장
