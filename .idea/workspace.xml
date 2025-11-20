@@ -5,17 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d37e0b0-b65a-4795-95e2-24b108c3b53f" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OmniEureka/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/database-deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/eureka-deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/order-deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/redis-deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
