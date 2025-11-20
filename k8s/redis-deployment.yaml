@@ -1,0 +1,38 @@
+# redis-deployment.yaml
+
+# 1. Deployment: Redis 컨테이너 배포
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis-container
+          image: redis:latest # 공식 Redis 이미지 사용
+          ports:
+            - containerPort: 6379
+
+---
+# 2. Service: 마이크로서비스 내부 접근용 고정 DNS 이름 제공
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service # Order/Product Service가 사용할 DNS 이름
+spec:
+  selector:
+    app: redis
+  ports:
+    - port: 6379
+      targetPort: 6379
+  type: ClusterIP # 클러스터 내부에서만 접근 가능

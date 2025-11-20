@@ -94,9 +94,9 @@ public class OrderService {
            Order savedOrder = orderRepository.save(order);
 
            // 테스트코드 (테스트가 종료되면 주석처리해주세요)
-           if (order.getQuantity() == 1) { // 예시: 수량이 1개인 경우에만 오류 유발
+ /*          if (order.getQuantity() == 1) { // 예시: 수량이 1개인 경우에만 오류 유발
                throw new RuntimeException("재고 차감 후, 후속 로직 강제 오류 발생!");
-           }
+           }*/
             // 테스트 코드 끝
            return savedOrder;
 

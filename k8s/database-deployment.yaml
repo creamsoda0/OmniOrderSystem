@@ -1,0 +1,69 @@
+# database-deployment.yaml
+
+# 1. Persistent Volume Claim (PVC): 영속적인 저장소 요청
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv-claim
+spec:
+  # ReadWriteOnce: 하나의 노드에서만 읽기/쓰기 가능
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi # 1기가바이트 저장 공간 요청
+
+---
+# 2. Deployment: PostgreSQL 컨테이너 배포
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      # PVC를 Deployment에 연결
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
+      containers:
+        - name: postgres-container
+          image: postgres:14 # 공식 PostgreSQL 이미지 사용
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            # DB 데이터가 저장될 경로에 영속 볼륨 마운트
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+          # DB 접속 정보 설정 (실제 운영 환경에서는 Secret을 사용해야 합니다!)
+          env:
+            - name: POSTGRES_DB
+              value: omniorderdb
+            - name: POSTGRES_USER
+              value: user
+            - name: POSTGRES_PASSWORD
+              value: password
+
+---
+# 3. Service: 마이크로서비스 내부 접근용 고정 DNS 이름 제공
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service # Order/Product Service가 사용할 DNS 이름
+spec:
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+  type: ClusterIP # 클러스터 내부에서만 접근 가능

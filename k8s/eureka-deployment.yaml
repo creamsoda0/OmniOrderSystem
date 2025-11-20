@@ -1,0 +1,42 @@
+# eureka-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-server-deployment
+  labels:
+    app: eureka-server
+spec:
+  replicas: 1 # Eureka는 일단 1개로 시작
+  selector:
+    matchLabels:
+      app: eureka-server
+  template:
+    metadata:
+      labels:
+        app: eureka-server
+    spec:
+      containers:
+        - name: eureka-server-container
+          # 🐳 Docker Hub에 푸시한 이미지 이름으로 변경
+          image: creamdocker/omni-eureka:1.0.0
+          ports:
+            - containerPort: 8761
+          # 💡 중요: Eureka 서버는 자신의 고정 주소를 알아야 합니다.
+          env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              # Service 이름과 Port를 사용하여 내부 접근 주소를 설정
+              # (아래 Service 섹션에서 정의할 이름: eureka-service)
+              value: http://eureka-service:8761/eureka/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-service # 다른 서비스들이 Eureka를 찾을 때 사용할 이름 (DNS)
+spec:
+  selector:
+    app: eureka-server
+  ports:
+    - port: 8761
+      targetPort: 8761
+  type: ClusterIP # 클러스터 내부에서만 접근 가능

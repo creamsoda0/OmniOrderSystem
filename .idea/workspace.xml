@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d37e0b0-b65a-4795-95e2-24b108c3b53f" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Order-Service/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/ProductClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/ProductClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OmniEureka/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/database-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/eureka-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/order-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/product-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/redis-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +57,11 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Springproject/OmniOrderProject&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Springproject\OmniOrderProject\k8s" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="OmniOrderProject" />

@@ -1,0 +1,54 @@
+# product-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service-deployment
+  labels:
+    app: product-service
+spec:
+  replicas: 2 # 장애 대비 및 부하 분산을 위해 2개로 설정
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - name: product-service-container
+          # 🐳 Docker Hub에 푸시한 이미지 이름으로 변경
+          image: creamdocker/product-service:1.0.0
+          ports:
+            - containerPort: 8082 # Product Service가 사용하는 포트
+          env:
+            # 💡 중요: Eureka 서버 주소를 Service 이름으로 지정
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://eureka-service:8761/eureka/
+            # 💡 Redis 연결 설정 추가
+            - name: SPRING_REDIS_HOST
+              value: redis-service # Redis Service의 DNS 이름
+            - name: SPRING_REDIS_PORT
+              value: "6379"
+
+            # 💡 DB 연결 설정 추가
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-service:5432/omniorderdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: user
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service # Order Service가 이 이름으로 Product Service를 찾음
+spec:
+  selector:
+    app: product-service
+  ports:
+    - port: 8082
+      targetPort: 8082
+      # NodePort 타입으로 설정하면 클러스터 외부에서 Node IP와 포트로 접근 가능 (테스트 목적)
+  type: ClusterIP

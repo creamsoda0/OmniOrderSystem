@@ -1,6 +1,13 @@
 🛍️ OmniOrderSystem: 실시간 주문 처리 시스템
 현재 진행중인 프로젝트(미완성)입니다. 
 
+2025.11.21 업데이트 사항:
+각서비스별 Dockerfile 생성
+Docker hub에 이미지 push
+Kubernetis 환경파일 생성 최상단 디렉터리에 k8s에 모아뒀음
+Kubernetis로 서비스 배포 시도 중 DB설정 에러 (오라클DB설정, Postgresql 설정 충돌)
+DB충돌 문제는 브랜치를 나눠 해결해보겠음.
+
 2025.11.20 업데이트 사항:
 주문정보 DB Transaction 실패시 재고 복구하는 api 만듬.
 테스트 코드 작성 완료
