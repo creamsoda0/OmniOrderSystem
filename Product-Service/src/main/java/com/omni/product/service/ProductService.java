@@ -4,11 +4,12 @@ package com.omni.product.service;
 import com.omni.product.Product;
 import com.omni.product.ProductRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
-
+@Slf4j
 @Service
 public class ProductService {
 
@@ -45,5 +46,21 @@ public class ProductService {
 
         // 커밋 시점에 DB에 반영됨
         return true;
+    }
+
+    @Transactional
+    public void restoreStock(Long productId, Integer quantity) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new NoSuchElementException("상품을 찾을 수 없습니다: " + productId));
+
+        // 재고 증가 (차감의 반대)
+        int currentStock = product.getStock();
+        product.setStock(currentStock + quantity);
+
+        productRepository.save(product);
+
+        // 로그를 통해 복구 성공 확인
+        log.info("✅ 재고 복구 완료: 상품 ID={}, 복구 수량={}, 현재 재고={}",
+                productId, quantity, product.getStock());
     }
 }

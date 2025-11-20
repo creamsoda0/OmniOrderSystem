@@ -4,6 +4,7 @@ package com.omni.product.controller;
 import com.omni.product.Product;
 import com.omni.product.StockUpdateRequestDto;
 import com.omni.product.service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
 
+@Slf4j
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -45,6 +47,20 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("상품을 찾을 수 없습니다.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("재고 차감 중 오류 발생: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/restore-stock")
+    public ResponseEntity<Void> restoreStock(@RequestBody StockUpdateRequestDto request) {
+        try {
+            productService.restoreStock(request.getProductId(), request.getQuantity());
+            return ResponseEntity.ok().build(); // 200 OK 응답
+        } catch (NoSuchElementException e) {
+            // 복구할 상품이 없는 경우 (404)
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("재고 복구 중 오류 발생: {}", e.getMessage());
+            return ResponseEntity.internalServerError().build(); // 500 Internal Server Error
         }
     }
 }

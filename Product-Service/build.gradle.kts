@@ -50,6 +50,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks.withType<JavaCompile> { // ✅ Kotlin DSL: '<' 와 '>'를 사용하여 타입을 명시
+    options.encoding = "UTF-8"
 }

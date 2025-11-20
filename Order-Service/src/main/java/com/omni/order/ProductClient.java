@@ -3,6 +3,7 @@ package com.omni.order;
 import com.omni.order.dto.StockUpdateRequestDto; // DTO는 Order Service에 복사/정의해야 합니다.
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -13,4 +14,7 @@ public interface ProductClient {
      */
     @PostMapping("/deduct-stock")
     String deductStock(@RequestBody StockUpdateRequestDto request);
+
+    @PostMapping("/restore-stock")
+    ResponseEntity<Void> restoreStock(@RequestBody StockUpdateRequestDto request);
 }

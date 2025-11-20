@@ -1,0 +1,4 @@
+# gradle.properties 파일 내용
+
+# 인코딩 문제를 해결하기 위해, Gradle JVM 실행 인코딩을 UTF-8로 강제 지정합니다.
+org.gradle.jvmargs=-Dfile.encoding=UTF-8
