@@ -1,0 +1,7 @@
+Skaffold 실행 파일 (바이너리)는 Git에 올리지 않습니다.
+
+skaffold.exe
+
+혹시 모르니 Minikube나 기타 K8S 관련 툴도 제외
+
+minikube.exe
