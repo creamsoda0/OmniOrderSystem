@@ -1,34 +1,52 @@
 🛍️ OmniOrderSystem: 실시간 주문 처리 시스템
 현재 진행중인 프로젝트(미완성)입니다.
 
-2025.11.21 + 업데이트 사항:  
-DB는 PostgreSQL을 사용  
-현재 모든 시스템이 Docker에 이미지로 올라감  
-Kubernetes를 통해 2중화 완료  
-파이프라인 구성을 위해 skaffold를 도입 시도 중  
-로컬환경과 kubernetes 환경의 http 설정을 동일하게 하기 위해  
-ingress를 도입 시도 중
+<details>
+<summary><strong>2025.11.21 + 업데이트 사항</strong></summary>
 
-2025.11.21 업데이트 사항 :  
-각서비스별 Dockerfile 생성  
-Docker hub에 이미지 push  
-Kubernetis 환경파일 생성 최상단 디렉터리에 k8s에 모아뒀음  
-Kubernetis로 서비스 배포 시도 중 DB설정 에러   
-(오라클DB설정, Postgresql 설정 충돌)  
-DB충돌 문제는 브랜치를 나눠 해결해보겠음.
+* DB는 PostgreSQL을 사용
+* 현재 모든 시스템이 Docker 이미지로 구성
+* Kubernetes를 통해 2중화 완료
+* 파이프라인 구성을 위해 Skaffold 도입 시도 중
+* 로컬 환경과 Kubernetes 환경의 HTTP 설정 통일을 위해
+  Ingress 도입 시도 중
 
-2025.11.20 업데이트 사항:  
-주문정보 DB Transaction 실패시 재고 복구하는 api 만듬.  
-테스트 코드 작성 완료  
-인코딩 문제 해결 미완료 로그에서 UTF-8임에도 한글이 깨짐
+</details>
 
-2025.11.17 업데이트 사항:
-주문 처리 로직 MVP가 만들어짐  
-MSA + OpenFeign 구조 완성  
-테스트 DB완성  
-주문시 재고 차감 로직 완성  
-사용자 interface 간단 구현  
-Docker에 Redis 설치 완료
+<details>
+<summary><strong>2025.11.21 업데이트 사항</strong></summary>
+
+* 각 서비스별 Dockerfile 생성
+* Docker Hub에 이미지 push
+* Kubernetes 환경 파일 생성 후 최상단 디렉터리 `k8s`에 정리
+* Kubernetes 서비스 배포 시도 중 DB 설정 에러 발생
+
+    * (Oracle 설정과 PostgreSQL 설정 충돌)
+* DB 충돌 문제는 브랜치를 나눠 해결 예정
+
+</details>
+
+<details>
+<summary><strong>2025.11.20 업데이트 사항</strong></summary>
+
+* 주문 DB Transaction 실패 시 재고 복구 API 구현
+* 테스트 코드 작성 완료
+* 한글 UTF-8 인코딩 문제 수정 진행 중
+
+</details>
+
+<details>
+<summary><strong>2025.11.17 업데이트 사항</strong></summary>
+
+* 주문 처리 로직 MVP 구축
+* MSA + OpenFeign 구조 완성
+* 테스트 DB 구축
+* 주문 시 재고 차감 로직 구현
+* 사용자 인터페이스 간단 구현
+* Docker에 Redis 설치 완료
+
+</details>
+
 
 
 🧑‍💻 프로젝트 개요 (Project Overview)
