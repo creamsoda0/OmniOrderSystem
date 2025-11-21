@@ -32,11 +32,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: eureka-service # 다른 서비스들이 Eureka를 찾을 때 사용할 이름 (DNS)
+  name: eureka-service
 spec:
   selector:
     app: eureka-server
   ports:
-    - port: 8761
-      targetPort: 8761
-  type: ClusterIP # 클러스터 내부에서만 접근 가능
+    - port: 8761       # 클러스터 내부 포트
+      targetPort: 8761 # 컨테이너 포트
+      nodePort: 30087  # 💡 외부로 노출할 포트 (30000-32767 범위)
+  type: NodePort       # 💡 ClusterIP 대신 NodePort로 변경

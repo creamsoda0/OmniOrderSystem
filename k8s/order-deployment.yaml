@@ -39,6 +39,10 @@ spec:
               value: postgres
             - name: SPRING_DATASOURCE_PASSWORD
               value: "1234"
+            # 💡 추가: Hibernate Dialect 강제 지정 (누락 시 Dialect 결정 오류 가능성 방지)
+            - name: SPRING_JPA_DATABASE_PLATFORM
+              value: org.hibernate.dialect.PostgreSQLDialect
+
 
 ---
 apiVersion: v1

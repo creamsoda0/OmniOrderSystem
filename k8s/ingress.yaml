@@ -1,0 +1,55 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: omniorder-ingress
+  annotations:
+    # 💡 Nginx Ingress Controller를 사용한다고 가정합니다.
+    # 만약 다른 컨트롤러를 사용한다면 여기에 해당하는 annotation을 사용해야 합니다.
+    # 예시: Ingress가 요청을 Service의 루트 경로('/')로 전달하도록 설정
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  # 💡 Ingress에 접근할 때 사용할 Host 이름을 지정합니다.
+  # 로컬 환경에서는 'localhost'를 사용할 수 있도록 /etc/hosts 파일을 수정하거나,
+  # host를 생략하고 Minikube IP로 접근할 수 있습니다. 여기서는 도메인 설정을 생략합니다.
+  # rules:
+  #   - host: "api.myshop.com"
+
+  rules:
+    - http:
+        paths:
+          # 1. Order Service 경로 설정
+          - path: /orders
+            pathType: Prefix # /orders로 시작하는 모든 요청 처리
+            backend:
+              service:
+                name: order-service
+                port:
+                  number: 8081 # Order Service의 내부 포트
+
+          # 2. Product Service 경로 설정 (재고 조회 등)
+          - path: /products
+            pathType: Prefix # /products로 시작하는 모든 요청 처리
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 8082 # Product Service의 내부 포트
+
+          # 3. Eureka Dashboard (옵션: 관리를 위해 /eureka 경로를 연결)
+          - path: /eureka
+            pathType: Prefix
+            backend:
+              service:
+                name: eureka-service
+                port:
+                  number: 8761 # Eureka Service의 내부 포트
+
+          # 4. 프론트엔드/웹 페이지 제공 (Order Service가 정적 파일을 제공한다고 가정)
+          # Order Service가 index.html을 서빙하므로, 루트 경로는 Order Service로 보냅니다.
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service
+                port:
+                  number: 8081
