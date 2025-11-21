@@ -36,9 +36,9 @@ spec:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-service:5432/omniorderdb
             - name: SPRING_DATASOURCE_USERNAME
-              value: user
+              value: postgres
             - name: SPRING_DATASOURCE_PASSWORD
-              value: password
+              value: "1234"
 
 ---
 apiVersion: v1

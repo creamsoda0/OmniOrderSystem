@@ -2,8 +2,8 @@
 FROM eclipse-temurin:21-jdk-jammy
 
 # 2. 메인 jar 파일을 컨테이너 내부로 복사
-# (주의: 프로젝트 빌드 시 생성되는 jar 파일명을 확인해야 합니다. 예: order-service-1.0-SNAPSHOT.jar)
-ARG JAR_FILE=build/libs/*.jar
+# (주의: 프로젝트 빌드 시 생성되는 jar 파일명을 확인해야 합니다. 예: Order-Service-1.0-SNAPSHOT.jar)
+ARG JAR_FILE=build/libs/Product-Service-1.0-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 
 # 3. Timezone 설정 (선택 사항, 로그 시간 정확도를 위해 권장)

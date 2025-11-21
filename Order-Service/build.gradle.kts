@@ -39,7 +39,7 @@ dependencies {
     // Order Service가 아닌 Product Service라면 이 줄을 추가합니다.
     // 현재 Order Service 파일이므로 Redis는 제거하거나 주석 처리하세요.
     // implementation("org.springframework.boot:spring-boot-starter-data-redis")
-
+    runtimeOnly("org.postgresql:postgresql")
     // Oracle Driver
     // Spring Boot 3.x (Jakarta EE) 호환되는 버전으로 하나만 선택합니다.
     runtimeOnly("com.oracle.database.jdbc:ojdbc11")

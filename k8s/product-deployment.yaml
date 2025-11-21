@@ -36,9 +36,17 @@ spec:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres-service:5432/omniorderdb
             - name: SPRING_DATASOURCE_USERNAME
-              value: user
+              value: postgres
             - name: SPRING_DATASOURCE_PASSWORD
-              value: password
+              value: "1234"
+
+            # 💡 Hibernate Dialect 강제 지정 추가
+            - name: SPRING_JPA_DATABASE_PLATFORM
+              value: org.hibernate.dialect.PostgreSQLDialect
+
+            # 💡 DDL auto 모드 설정 (선택 사항이지만 권장)
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update # 또는 create-drop
 ---
 apiVersion: v1
 kind: Service

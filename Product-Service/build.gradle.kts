@@ -35,6 +35,8 @@ dependencies {
     // Redis (캐싱) (필수)
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
+    runtimeOnly("org.postgresql:postgresql")
+
     // Oracle Driver (필수)
     runtimeOnly("com.oracle.database.jdbc:ojdbc11")
     // runtimeOnly("com.oracle.database.jdbc:ojdbc8") // 사용하시는 JDK에 따라 선택
