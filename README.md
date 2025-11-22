@@ -2,6 +2,14 @@
 현재 진행중인 프로젝트(미완성)입니다.
 
 <details>
+<summary><strong>2025.11.22 업데이트 사항</strong></summary>
+
+* Skaffold 설치 및 적용 완료
+* Helm 설치완료 및 적용은 진행중
+
+</details>
+
+<details>
 <summary><strong>2025.11.21 + 업데이트 사항</strong></summary>
 
 * DB는 PostgreSQL을 사용

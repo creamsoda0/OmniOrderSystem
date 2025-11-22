@@ -1,26 +1,35 @@
-apiVersion: skaffold/v4beta10
+apiVersion: skaffold/v2beta29
 kind: Config
 metadata:
   name: omni-order-project
 
-# 1. 빌드 설정: Dockerfile 위치와 이미지 태그 설정
+# 1. 빌드 설정
 build:
-  # Docker Hub 태그에 맞춰 사용자 이름과 이미지 이름을 지정해야 합니다.
-  tagPolicy:
-    custom:
-      tag: "1.0.0" # 태그를 고정합니다. Skaffold가 자동으로 태그를 붙일 수도 있습니다.
-  artifacts:
-    - image: creamdocker/order-service # Docker Hub에 푸시할 이미지 이름
-      context: ./order-service-path # Order Service의 Dockerfile이 있는 경로
-    - image: creamdocker/product-service # Product Service의 이미지 이름
-      context: ./product-service-path # Product Service의 Dockerfile이 있는 경로
+  # 태그 정책: 로컬 개발 시에는 git 대신 sha256을 쓰거나 기본값을 쓰는 게 정신건강에 좋습니다.
+  # 여기서는 기본 로컬 개발 설정을 따르도록 명시적인 tagPolicy를 제거하거나 간단히 둡니다.
+  local:
+    push: false # 로컬 쿠버네티스(Docker Desktop/Minikube) 사용 시 이미지를 레지스트리에 푸시하지 않음
 
-# 2. 배포 설정: 적용할 쿠버네티스 매니페스트 파일 지정
+  artifacts:
+    # Order Service
+    - image: creamdocker/order-service
+      context: ../order-service # skaffold.yaml이 있는 폴더의 상위(../)로 가서 찾음
+      docker:
+        dockerfile: Dockerfile
+
+    # Product Service
+    - image: creamdocker/product-service
+      context: ../product-service
+      docker:
+        dockerfile: Dockerfile
+
+# 2. 배포 설정
 deploy:
   kubectl:
     manifests:
-      - k8s/eureka-deployment.yaml
-      - k8s/order-deployment.yaml
-      - k8s/product-deployment.yaml
-      - k8s/ingress.yaml
-    # - k8s/postgres-deployment.yaml, k8s/redis-deployment.yaml 등 나머지 파일 추가
+    - "*-deployment.yaml"  # ~deployment.yaml로 끝나는 파일만
+    - "ingress.yaml"       # 인그레스 파일
+
+      # 만약 특정 파일만 포함해야 한다면 아래처럼 적되, 경로가 정확해야 합니다.
+      # - database-deployment.yaml
+      # - eureka-deployment.yaml

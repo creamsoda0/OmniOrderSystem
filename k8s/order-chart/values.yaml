@@ -1,0 +1,10 @@
+# values.yaml
+replicaCount: 1
+
+image:
+  repository: creamdocker/order-service
+  tag: "latest"
+
+service:
+  port: 8081
+  name: order-service
