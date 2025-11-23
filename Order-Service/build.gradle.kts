@@ -54,6 +54,11 @@ dependencies {
 
     // 테스트 관련
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // 1. Flyway 핵심 라이브러리
+    implementation ("org.flywaydb:flyway-core")
+/*    // 2. PostgreSQL용 Flyway 확장 모듈 (Spring Boot 3.0 이상 필수)
+    implementation ("org.flywaydb:flyway-database-postgresql")*/
 }
 
 tasks.withType<JavaCompile> { // ✅ Kotlin DSL: '<' 와 '>'를 사용하여 타입을 명시

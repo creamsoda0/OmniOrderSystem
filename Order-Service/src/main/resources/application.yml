@@ -8,15 +8,23 @@ spring:
 #    url: jdbc:oracle:thin:@localhost:1521:XE # DB 접속 정보 확인
 #    username: omni
 #    password: omni
-
-
   # 2. JPA 설정
   # JPA (Hibernate) 설정
   jpa:
     hibernate:
-      ddl-auto: update # 개발 단계에서 테이블 자동 생성/갱신 (주의 필요)
-    show-sql: true # SQL 쿼리를 로그에 출력
-#    database-platform: org.hibernate.dialect.OracleDialect # 사용하는 Oracle Dialect
+      # 🛑 update가 아니라 validate로 바꿉니다! (가장 중요)
+      # validate: 자바 엔티티와 실제 DB 테이블이 맞는지 검사만 함 (수정 X)
+      ddl-auto: validate
+    defer-datasource-initialization: false # Flyway가 먼저 실행되어야 하므로 false
+
+  # 2. Flyway 설정 추가
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+    # 👇 [핵심] 이 두 줄을 꼭 추가하세요!
+    clean-disabled: false           # DB 초기화(Clean) 기능을 켭니다.
+    clean-on-validation-error: true # 체크섬 에러가 나면 DB를 싹 지우고 다시 만듭니다.
 
   # 3. Application Name 설정
   application:

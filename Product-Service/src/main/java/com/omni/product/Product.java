@@ -1,21 +1,24 @@
-// Product Service
 package com.omni.product;
 
 import jakarta.persistence.*;
-import lombok.Data; //Lombok 사용
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
 @Entity
-@Table (name = "PRODUCTS")
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "products") // 소문자 권장
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //상품 ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가
+    private Long id;
 
-    private String name; //상품명
+    private String name; // 상품명
 
-    private Integer Stock; //재고 수량 <--- 핵심 관리 대상
+    private Integer stock; // 재고 수량 (소문자로 수정함)
 
-    private Integer price; //가격
+    private Integer price; // 가격
 }

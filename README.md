@@ -7,6 +7,8 @@
 * Skaffold + Helm 연동 완료
 * Ingress 서버 작업 완료 
 * skaffold dev 후 local서버에서 index 화면 동작 확인
+* flyware 설치 완료 이제 sql 문 수정해도 즉각 반영됨
+* 단 DB를 밀어버리므로 나중에 완성본에서는 주석 처리를 반영할것
 
 </details>
 

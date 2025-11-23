@@ -1,0 +1,19 @@
+-- [PostgreSQL용 초기 데이터]
+-- 주의: 테이블 생성(CREATE TABLE)은 Hibernate가 자동으로 해주므로 INSERT문만 작성합니다.
+-- ID 컬럼은 자동으로 증가하므로 값을 지정하지 않아도 됩니다. (Postgres의 SERIAL/IDENTITY 기능)
+
+-- 1. 상품(Products) 데이터 예시
+-- (Product Service에 넣으세요)
+-- ID는 자동 생성이므로 name, stock, price만 넣습니다.
+INSERT INTO products (name, stock, price) VALUES ('맥북 프로 16인치', 10, 3500000);
+INSERT INTO products (name, stock, price) VALUES ('아이폰 15', 100, 1200000);
+INSERT INTO products (name, stock, price) VALUES ('에어팟 맥스', 50, 700000);
+INSERT INTO products (name, stock, price) VALUES ('갤럭시 S24', 200, 1100000);
+
+
+-- 2. 주문(Orders) 데이터 예시
+-- (Order Service에 넣으세요)
+-- 만약 초기 주문 데이터도 필요하다면 아래처럼 넣을 수 있습니다.
+-- created_at은 자바에서 @CreationTimestamp가 처리해주지만, SQL로 넣을 땐 now()를 씁니다.
+-- INSERT INTO orders (product_id, quantity, total_price, order_status, created_at) 
+-- VALUES (1, 2, 7000000, 'COMPLETED', now());

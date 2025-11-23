@@ -5,27 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d37e0b0-b65a-4795-95e2-24b108c3b53f" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/order-chart/templates/service.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-chart/.helmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-chart/Chart.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-chart/templates/deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-chart/templates/service.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-chart/values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Order-Service/src/main/resources/db/migration/V1__init_products.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Product-Service/src/main/resources/db/migration/V1__init_products.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/etc/SQL 생성문(Postgresql).txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Order-Service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Product-Service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/k8s/database-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/database-deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/order-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/templates/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/order-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/order-deployment.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/product-deployment.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/skaffold.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
