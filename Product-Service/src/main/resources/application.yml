@@ -1,4 +1,4 @@
-# application.yml (Order Service)
+# application.yml (Product Service)
 
 # --- [ Spring 설정 블록: 모든 spring 관련 설정을 여기에 넣습니다. ] ---
 spring:
@@ -12,7 +12,7 @@ spring:
   # 2. JPA 설정
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
 
   # 3. Application Name 설정

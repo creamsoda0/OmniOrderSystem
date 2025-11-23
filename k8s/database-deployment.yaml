@@ -48,7 +48,7 @@ spec:
           # DB 접속 정보 설정 (실제 운영 환경에서는 Secret을 사용해야 합니다!)
           env:
             - name: POSTGRES_DB
-              value: omniorderdb
+              value: omnidb
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PASSWORD

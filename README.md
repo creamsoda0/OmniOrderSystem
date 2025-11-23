@@ -2,6 +2,15 @@
 현재 진행중인 프로젝트(미완성)입니다.
 
 <details>
+<summary><strong>2025.11.23 업데이트 사항</strong></summary>
+
+* Skaffold + Helm 연동 완료
+* Ingress 서버 작업 완료 
+* skaffold dev 후 local서버에서 index 화면 동작 확인
+
+</details>
+
+<details>
 <summary><strong>2025.11.22 업데이트 사항</strong></summary>
 
 * Skaffold 설치 및 적용 완료

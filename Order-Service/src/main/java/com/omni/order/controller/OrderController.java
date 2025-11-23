@@ -7,18 +7,24 @@ import com.omni.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/orders") // 기본 경로: /orders
 public class OrderController {
 
+
+    /*public class OrderApplication { ... }*/
+
     @Autowired
     private OrderService orderService; // 비즈니스 로직 담당 서비스 주입
 
+
+    @GetMapping
+    public ModelAndView goIndex() {
+        return new ModelAndView("forward:/index.html");
+    }    
     /**
      * 주문 생성 API (POST /orders)
      * 주문 요청을 받아 OrderService를 통해 재고 차감 및 주문 저장을 시도합니다.

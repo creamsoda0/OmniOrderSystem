@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d37e0b0-b65a-4795-95e2-24b108c3b53f" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/order-chart/templates/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/product-chart/.helmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/product-chart/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/product-chart/templates/deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/product-chart/templates/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/product-chart/values.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/database-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/database-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/ingress.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/order-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/templates/deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/order-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/order-deployment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/product-deployment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/skaffold.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +60,18 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Springproject/OmniOrderProject"
+    "last_opened_file_path": "C:/Springproject/OmniOrderProject/k8s/order-chart/templates"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Springproject\OmniOrderProject\k8s\order-chart\templates" />
+      <recent name="C:\Springproject\OmniOrderProject\k8s" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Springproject\OmniOrderProject\k8s" />
     </key>

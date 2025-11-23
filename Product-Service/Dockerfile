@@ -1,18 +1,28 @@
-# 1. 베이스 이미지 설정: 경량화된 Eclipse Temurin (Java 17) 사용 권장
+# --- 1단계: 빌드 (Builder Stage) ---
+# JDK가 포함된 이미지를 기반으로 소스 코드를 빌드합니다.
+FROM eclipse-temurin:21-jdk-jammy AS builder
+WORKDIR /app
+
+# 프로젝트의 모든 파일을 컨테이너 안으로 복사합니다.
+COPY . .
+
+# 윈도우에서 실행 권한 문제가 생길 수 있으므로 실행 권한을 부여합니다.
+RUN chmod +x ./gradlew
+
+# Gradle을 사용하여 JAR 파일을 생성합니다. (테스트는 건너뛰어서 속도를 높입니다)
+RUN ./gradlew bootJar -x test
+
+# --- 2단계: 실행 (Runner Stage) ---
+# 실제 실행할 가벼운 이미지를 준비합니다.
 FROM eclipse-temurin:21-jdk-jammy
+WORKDIR /app
 
-# 2. 메인 jar 파일을 컨테이너 내부로 복사
-# (주의: 프로젝트 빌드 시 생성되는 jar 파일명을 확인해야 합니다. 예: Order-Service-1.0-SNAPSHOT.jar)
-ARG JAR_FILE=build/libs/Product-Service-1.0-SNAPSHOT.jar
-COPY ${JAR_FILE} app.jar
+# 1단계(builder)에서 만든 따끈따끈한 JAR 파일만 가져옵니다.
+# (build/libs/ 폴더 안에 있는 .jar 파일을 app.jar로 복사)
+COPY --from=builder /app/build/libs/*.jar app.jar
 
-# 3. Timezone 설정 (선택 사항, 로그 시간 정확도를 위해 권장)
+# Timezone 설정
 ENV TZ=Asia/Seoul
 
-# 4. 애플리케이션 실행 명령어
-# jar 파일을 실행하며 Spring Profile (예: dev, prod)을 지정할 수 있습니다.
-ENTRYPOINT ["java", "-jar", "/app.jar"]
-
-# 5. 노출 포트 (선택 사항)
-# Order Service의 기본 포트 8081
-EXPOSE 8082
+# 실행
+ENTRYPOINT ["java", "-jar", "app.jar"]

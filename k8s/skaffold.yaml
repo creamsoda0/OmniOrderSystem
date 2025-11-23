@@ -25,11 +25,30 @@ build:
 
 # 2. 배포 설정
 deploy:
+  # 1. 애플리케이션은 Helm으로 배포
+  helm:
+    releases:
+      - name: my-order-release
+        chartPath: order-chart
+        # Skaffold가 빌드한 이미지를 values.yaml의 'image' 키에 덮어씌웁니다.
+        artifactOverrides:
+          image: creamdocker/order-service
+
+      - name: my-product-release
+        chartPath: product-chart
+        artifactOverrides:
+          image: creamdocker/product-service
+
+  # 2. 나머지 인프라(DB, Redis, 등)는 기존처럼 kubectl로 배포 (하이브리드 방식)
   kubectl:
     manifests:
-    - "*-deployment.yaml"  # ~deployment.yaml로 끝나는 파일만
-    - "ingress.yaml"       # 인그레스 파일
+      - "eureka-deployment.yaml"
+      - "ingress.yaml"
+      - "*-deployment.yaml" # 주의: order랑 product는 이미 Helm으로 했으니 제외해야 함!
+      # 하지만 와일드카드(*)를 쓰면 중복 배포될 위험이 있습니다.
+      # 안전하게 아래처럼 필요한 파일만 명시하는 것을 추천합니다.
+      - "database-deployment.yaml"
+      - "redis-deployment.yaml"
+      - "eureka-deployment.yaml"
 
-      # 만약 특정 파일만 포함해야 한다면 아래처럼 적되, 경로가 정확해야 합니다.
-      # - database-deployment.yaml
-      # - eureka-deployment.yaml
+      # order랑 product의 deployment.yaml은 여기서 목록에 넣지 않습니다!

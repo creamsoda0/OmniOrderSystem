@@ -1,10 +1,10 @@
 replicaCount: 1
 
 # image를 repository와 tag로 나누지 않고 하나로 둡니다.
-image: creamdocker/order-service
+image: creamdocker/product-service
 
 service:
-  name: order-service
+  name: product-service
   port: 8081
 
 database:
