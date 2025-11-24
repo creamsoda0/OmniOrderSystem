@@ -39,9 +39,18 @@ spring:
 # --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
 
 server:
-  port: 8082 # Product Service 포트
+  port: 8082 # 🚨 포트 다름 주의
+  servlet:
+    context-path: /product-service # 🚨 Ingress와 완벽히 일치해야 함
+  forward-headers-strategy: framework
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-service:8761/eureka/
+
+springdoc:
+  api-docs:
+    path: /product-service/v3/api-docs # ⬅️ Context Path를 포함하여 JSON 경로를 강제 지정
+  swagger-ui:
+    disable-swagger-default-url: true

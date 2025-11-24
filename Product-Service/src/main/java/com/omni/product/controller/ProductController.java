@@ -4,8 +4,8 @@ package com.omni.product.controller;
 import com.omni.product.Product;
 import com.omni.product.StockUpdateRequestDto;
 import com.omni.product.service.ProductService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +15,11 @@ import java.util.NoSuchElementException;
 @Slf4j
 @RestController
 @RequestMapping("/products")
+@RequiredArgsConstructor
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+
+    private final ProductService productService;
 
     // 상품 상세 정보 조회 API (Order Service가 가격 및 재고 정보를 조회할 때 사용)
     @GetMapping("/{id}")

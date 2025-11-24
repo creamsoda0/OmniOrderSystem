@@ -7,6 +7,7 @@ import com.omni.order.dto.OrderCreationRequest;
 import com.omni.order.dto.StockUpdateRequestDto;
 import com.omni.order.repository.OrderRepository;
 import feign.FeignException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,13 +17,13 @@ import java.util.NoSuchElementException;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class OrderService {
 
-    @Autowired
-    private ProductClient productClient; // Feign Client 주입
 
-    @Autowired
-    private OrderRepository orderRepository; // 방금 작성한 Repository 주입
+    private final ProductClient productClient; // Feign Client 주입
+
+    private final OrderRepository orderRepository; // 방금 작성한 Repository 주입
 
     @Transactional
     public Order createOrder(OrderCreationRequest request) {

@@ -4,7 +4,7 @@ package com.omni.order.controller;
 import com.omni.order.Order;
 import com.omni.order.dto.OrderCreationRequest;
 import com.omni.order.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/orders") // 기본 경로: /orders
+@RequiredArgsConstructor
 public class OrderController {
 
-
-    /*public class OrderApplication { ... }*/
-
-    @Autowired
-    private OrderService orderService; // 비즈니스 로직 담당 서비스 주입
-
+    private final OrderService orderService; // 비즈니스 로직 담당 서비스 주입
 
     @GetMapping
     public ModelAndView goIndex() {

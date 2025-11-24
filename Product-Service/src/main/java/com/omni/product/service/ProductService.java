@@ -4,17 +4,17 @@ package com.omni.product.service;
 import com.omni.product.Product;
 import com.omni.product.ProductRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     // (추후 Redis 캐싱을 적용할 위치)
     public Product getProductById(Long id) {

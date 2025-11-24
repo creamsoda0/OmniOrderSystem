@@ -4,10 +4,7 @@
 spring:
   # 1. Datasource 설정
   datasource:
-#    driver-class-name: oracle.jdbc.OracleDriver
-#    url: jdbc:oracle:thin:@localhost:1521:XE # DB 접속 정보 확인
-#    username: omni
-#    password: omni
+
   # 2. JPA 설정
   # JPA (Hibernate) 설정
   jpa:
@@ -39,9 +36,19 @@ spring:
 # --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
 
 server:
-  port: 8081 # Order Service 포트
+  port: 8081
+  servlet:
+    context-path: /order-service # 🚨 Ingress와 완벽히 일치해야 함
+  forward-headers-strategy: framework # 프록시 헤더 신뢰 설정
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      # K8s Service 이름 사용 (localhost 사용 금지)
+      defaultZone: http://eureka-service:8761/eureka/
+
+springdoc:
+  api-docs:
+    path: /order-service/v3/api-docs # ⬅️ Context Path를 포함하여 JSON 경로를 강제 지정
+  swagger-ui:
+    disable-swagger-default-url: true # Swagger 리다이렉트 방지
