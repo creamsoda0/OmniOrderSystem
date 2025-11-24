@@ -59,6 +59,9 @@ dependencies {
     implementation ("org.flywaydb:flyway-core")
 /*    // 2. PostgreSQL용 Flyway 확장 모듈 (Spring Boot 3.0 이상 필수)
     implementation ("org.flywaydb:flyway-database-postgresql")*/
+
+    // 💡 Swagger (OpenAPI 3) 의존성 추가
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 }
 
 tasks.withType<JavaCompile> { // ✅ Kotlin DSL: '<' 와 '>'를 사용하여 타입을 명시

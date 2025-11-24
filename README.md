@@ -2,6 +2,13 @@
 현재 진행중인 프로젝트(미완성)입니다.
 
 <details>
+<summary><strong>2025.11.24 업데이트 사항</strong></summary>
+
+* Swagger 의존성 설치완료
+
+</details>
+
+<details>
 <summary><strong>2025.11.23 업데이트 사항</strong></summary>
 
 * Skaffold + Helm 연동 완료
