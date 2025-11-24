@@ -4,7 +4,9 @@
 <details>
 <summary><strong>2025.11.24 업데이트 사항</strong></summary>
 
-* Swagger 의존성 설치완료
+* Swagger 설치완료
+* OrderService swagger 정상작동확인
+* 테스트 도구 : Postman
 
 </details>
 
