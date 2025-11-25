@@ -10,14 +10,21 @@ COPY build.gradle.kts .
 COPY settings.gradle.kts .
 COPY gradle/ gradle/
 
-# 2. gradlew에 실행 권한을 명시적으로 부여 (chmod가 복사 후 바로 적용되도록)
+# 2. apt 업데이트 및 dos2unix 설치
+# apt-get을 업데이트하고 dos2unix 유틸리티를 설치하여 줄바꿈 문제를 해결합니다.
+RUN apt-get update && apt-get install -y dos2unix
+
+# 3. gradlew 파일의 줄바꿈 문자(CRLF -> LF) 변환
+RUN dos2unix gradlew
+
+# 4. gradlew에 실행 권한을 명시적으로 부여 (chmod가 복사 후 바로 적용되도록)
 RUN chmod +x ./gradlew
 
-# 3. 나머지 소스 코드 복사
+# 5. 나머지 소스 코드 복사
 # (build.gradle.kts에 변경이 없을 경우, 이 부분부터 캐시가 적용됩니다.)
 COPY . .
 
-# 4. Gradle을 사용하여 JAR 파일을 생성합니다. (테스트는 건너뛰어서 속도를 높입니다)
+# 6. Gradle을 사용하여 JAR 파일을 생성합니다. (테스트는 건너뛰어서 속도를 높입니다)
 RUN ./gradlew bootJar -x test
 
 # --- 2단계: 실행 (Runner Stage) ---
