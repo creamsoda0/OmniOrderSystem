@@ -1,4 +1,4 @@
-package com.omni.order;
+package com.omni.order.feignclient;
 
 import com.omni.order.dto.StockUpdateRequestDto; // DTO는 Order Service에 복사/정의해야 합니다.
 

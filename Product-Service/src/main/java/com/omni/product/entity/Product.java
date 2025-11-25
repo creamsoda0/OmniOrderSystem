@@ -1,4 +1,4 @@
-package com.omni.product;
+package com.omni.product.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

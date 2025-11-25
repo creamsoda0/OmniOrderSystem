@@ -1,7 +1,7 @@
 package com.omni.order.repository;
 
 
-import com.omni.order.Order;
+import com.omni.order.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

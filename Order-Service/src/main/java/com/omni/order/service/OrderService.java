@@ -1,19 +1,16 @@
 package com.omni.order.service;
 
 
-import com.omni.order.Order;
-import com.omni.order.ProductClient;
+import com.omni.order.entity.Order;
+import com.omni.order.feignclient.ProductClient;
 import com.omni.order.dto.OrderCreationRequest;
 import com.omni.order.dto.StockUpdateRequestDto;
 import com.omni.order.repository.OrderRepository;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.NoSuchElementException;
 
 @Service
 @Slf4j

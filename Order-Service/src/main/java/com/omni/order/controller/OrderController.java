@@ -1,7 +1,7 @@
 package com.omni.order.controller;
 
 
-import com.omni.order.Order;
+import com.omni.order.entity.Order;
 import com.omni.order.dto.OrderCreationRequest;
 import com.omni.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
