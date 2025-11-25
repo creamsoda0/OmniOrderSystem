@@ -3,28 +3,18 @@
 FROM eclipse-temurin:21-jdk-jammy AS builder
 WORKDIR /app
 
-# 1. Gradle Wrapper 관련 파일만 먼저 복사
-# gradlew, build.gradle.kts, settings.gradle.kts, 그리고 gradle/wrapper 폴더를 복사합니다.
-COPY gradlew .
-COPY build.gradle.kts .
-COPY settings.gradle.kts .
-COPY gradle/ gradle/
-
-# 2. apt 업데이트 및 dos2unix 설치
-# apt-get을 업데이트하고 dos2unix 유틸리티를 설치하여 줄바꿈 문제를 해결합니다.
+# 1. 필수 유틸리티(dos2unix) 미리 설치 (캐시 활용을 위해 가장 먼저 실행)
 RUN apt-get update && apt-get install -y dos2unix
 
-# 3. gradlew 파일의 줄바꿈 문자(CRLF -> LF) 변환
-RUN dos2unix gradlew
-
-# 4. gradlew에 실행 권한을 명시적으로 부여 (chmod가 복사 후 바로 적용되도록)
-RUN chmod +x ./gradlew
-
-# 5. 나머지 소스 코드 복사
-# (build.gradle.kts에 변경이 없을 경우, 이 부분부터 캐시가 적용됩니다.)
+# 2. 프로젝트의 모든 파일을 컨테이너 안으로 복사
+# (이 명령어가 실행되면 윈도우의 gradlew 원본이 복사되므로, 변환은 이 다음 단계에서 해야 합니다.)
 COPY . .
 
-# 6. Gradle을 사용하여 JAR 파일을 생성합니다. (테스트는 건너뛰어서 속도를 높입니다)
+# 3. gradlew 파일 변환 및 실행 권한 부여
+# COPY . . 이후에 실행해야 덮어씌워진 파일을 다시 확실하게 고칠 수 있습니다.
+RUN dos2unix gradlew && chmod +x ./gradlew
+
+# 4. Gradle을 사용하여 JAR 파일을 생성합니다. (테스트는 건너뛰어서 속도를 높입니다)
 RUN ./gradlew bootJar -x test
 
 # --- 2단계: 실행 (Runner Stage) ---
