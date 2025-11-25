@@ -14,9 +14,9 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가
-    private Long id;
+    private Long productId;
 
-    private String name; // 상품명
+    private String productName; // 상품명
 
     private Integer stock; // 재고 수량 (소문자로 수정함)
 

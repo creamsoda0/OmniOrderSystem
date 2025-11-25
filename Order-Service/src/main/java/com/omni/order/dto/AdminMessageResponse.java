@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class AdminMessageResponse {
 
-    private Long id;       // 메시지 PK
+    private Long messageId;       // 메시지 PK
     private String title;
     private String content;
 }

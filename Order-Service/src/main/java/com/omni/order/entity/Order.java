@@ -17,7 +17,7 @@ public class Order {
     @Id
     // Oracle의 SEQUENCE 대신 PostgreSQL의 IDENTITY(자동 증가) 사용
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long orderId;
 
     private Long productId; // 주문한 상품 ID
 

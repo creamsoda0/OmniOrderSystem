@@ -1,4 +1,4 @@
-package com.omni.product;
+package com.omni.product.dto;
 
 import lombok.Data;
 
