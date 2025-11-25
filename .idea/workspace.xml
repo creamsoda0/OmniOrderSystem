@@ -5,8 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d37e0b0-b65a-4795-95e2-24b108c3b53f" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/etc/20251117.png.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/omniprojcet 구성도.drawio" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OmniEureka/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Order-Service/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Product-Service/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/message-chart/.helmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/message-chart/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/message-chart/templates/deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/message-chart/templates/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/message-chart/values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/src/main/java/com/omni/order/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/ingress.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/skaffold.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,22 +67,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Springproject/OmniOrderProject"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Springproject/OmniOrderProject/k8s&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Springproject\OmniOrderProject\k8s\order-chart\templates" />
       <recent name="C:\Springproject\OmniOrderProject\k8s" />
+      <recent name="C:\Springproject\OmniOrderProject\k8s\order-chart\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Springproject\OmniOrderProject\k8s" />

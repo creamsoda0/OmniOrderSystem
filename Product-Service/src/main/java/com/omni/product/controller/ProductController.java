@@ -1,7 +1,7 @@
 package com.omni.product.controller;
 
 
-import com.omni.product.Product;
+import com.omni.product.entity.Product;
 import com.omni.product.StockUpdateRequestDto;
 import com.omni.product.service.ProductService;
 import lombok.RequiredArgsConstructor;

@@ -23,6 +23,12 @@ build:
       docker:
         dockerfile: Dockerfile
 
+    # Message Service
+    - image: creamdocker/message-service
+      context: ../message-service
+      docker:
+        dockerfile: Dockerfile
+
 # 2. 배포 설정
 deploy:
   # 1. 애플리케이션은 Helm으로 배포
@@ -38,6 +44,11 @@ deploy:
         chartPath: product-chart
         artifactOverrides:
           image: creamdocker/product-service
+
+      - name: my-message-release
+        chartPath: message-chart
+        artifactOverrides:
+          image: creamdocker/message-service
 
   # 2. 나머지 인프라(DB, Redis, 등)는 기존처럼 kubectl로 배포 (하이브리드 방식)
   kubectl:

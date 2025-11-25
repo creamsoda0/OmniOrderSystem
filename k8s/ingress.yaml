@@ -35,4 +35,12 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              service: { name: order-service, port: { number: 8081 } }
+              service: { name: order-service, port: { number: 8083 } }
+
+          # 5. 메세지 서비스 (Message Service): /Message-service/로 시작하는 모든 요청
+          - path: /Message-service/
+            pathType: Prefix
+            backend:
+              service:
+                name: message-service
+                port: { number: 8083 }

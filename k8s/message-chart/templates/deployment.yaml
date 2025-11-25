@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # 👇 이름에 따옴표 필수
+  name: "{{ .Values.service.name }}-helm"
+  labels:
+    app: "{{ .Values.service.name }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: "{{ .Values.service.name }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.service.name }}"
+    spec:
+      containers:
+        # 👇 여기도 따옴표 필수
+        - name: "{{ .Values.service.name }}"
+          image: "{{ .Values.image }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+
+          # 👇 환경 변수 설정 (따옴표로 감싸기)
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "default"
+            - name: SPRING_DATASOURCE_URL
+              value: "{{ .Values.database.url }}"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "{{ .Values.database.username }}"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "{{ .Values.database.password }}"
+            - name: SPRING_JPA_DATABASE_PLATFORM
+              value: "org.hibernate.dialect.PostgreSQLDialect"

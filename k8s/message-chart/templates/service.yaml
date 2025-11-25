@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name }} # values.yaml의 이름을 씁니다 (order-service)
+  labels:
+    app: {{ .Values.service.name }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: TCP
+  selector:
+    app: {{ .Values.service.name }}

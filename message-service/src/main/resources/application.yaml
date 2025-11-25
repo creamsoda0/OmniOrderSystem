@@ -1,0 +1,54 @@
+# application.yml (Order Service)
+
+# --- [ Spring 설정 블록: 모든 spring 관련 설정을 여기에 넣습니다. ] ---
+spring:
+  # 1. Datasource 설정
+  datasource:
+
+  # 2. JPA 설정
+  # JPA (Hibernate) 설정
+  jpa:
+    hibernate:
+      # 🛑 update가 아니라 validate로 바꿉니다! (가장 중요)
+      # validate: 자바 엔티티와 실제 DB 테이블이 맞는지 검사만 함 (수정 X)
+      ddl-auto: validate
+    defer-datasource-initialization: false # Flyway가 먼저 실행되어야 하므로 false
+
+  # 2. Flyway 설정 추가
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+    # 👇 [핵심] 이 두 줄을 꼭 추가하세요!
+    clean-disabled: false           # DB 초기화(Clean) 기능을 켭니다.
+    clean-on-validation-error: true # 체크섬 에러가 나면 DB를 싹 지우고 다시 만듭니다.
+
+  # 3. Application Name 설정
+  application:
+    name: message-service
+
+  # 4. Redis 설정 (spring 하위에 data:redis 구조로 배치)
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
+
+server:
+  port: 8083
+  servlet:
+    context-path: /message-service # 🚨 Ingress와 완벽히 일치해야 함
+  forward-headers-strategy: framework # 프록시 헤더 신뢰 설정
+
+eureka:
+  client:
+    service-url:
+      # K8s Service 이름 사용 (localhost 사용 금지)
+      defaultZone: http://eureka-service:8761/eureka/
+
+springdoc:
+  api-docs:
+    path: /message-service/v3/api-docs # ⬅️ Context Path를 포함하여 JSON 경로를 강제 지정
+  swagger-ui:
+    disable-swagger-default-url: true # Swagger 리다이렉트 방지

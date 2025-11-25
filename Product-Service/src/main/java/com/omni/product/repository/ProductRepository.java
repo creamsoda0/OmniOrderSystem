@@ -1,6 +1,7 @@
-package com.omni.product;
+package com.omni.product.repository;
 
 
+import com.omni.product.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {

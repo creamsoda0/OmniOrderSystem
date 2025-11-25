@@ -1,8 +1,8 @@
 package com.omni.product.service;
 
 
-import com.omni.product.Product;
-import com.omni.product.ProductRepository;
+import com.omni.product.entity.Product;
+import com.omni.product.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,0 +1,13 @@
+replicaCount: 1
+
+# image를 repository와 tag로 나누지 않고 하나로 둡니다.
+image: creamdocker/message-service
+
+service:
+  name: message-service
+  port: 8083
+
+database:
+  url: "jdbc:postgresql://postgres-service:5432/omnidb"
+  username: "postgres"
+  password: "1234"
