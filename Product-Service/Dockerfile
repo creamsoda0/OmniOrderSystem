@@ -9,8 +9,11 @@ COPY . .
 # 윈도우에서 실행 권한 문제가 생길 수 있으므로 실행 권한을 부여합니다.
 RUN chmod +x ./gradlew
 
-# Gradle을 사용하여 JAR 파일을 생성합니다. (테스트는 건너뛰어서 속도를 높입니다)
-RUN ./gradlew bootJar -x test
+# RUN ./gradlew bootJar -x test
+
+# 다음 명령으로 대체합니다.
+# bash 쉘을 사용하고, ./gradlew의 전체 경로를 사용합니다.
+RUN /bin/bash -c "./gradlew bootJar -x test"
 
 # --- 2단계: 실행 (Runner Stage) ---
 # 실제 실행할 가벼운 이미지를 준비합니다.
