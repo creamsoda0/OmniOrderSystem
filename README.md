@@ -4,6 +4,17 @@
 <details>
 <summary><strong>2025.11.25 업데이트 사항</strong></summary>
 
+* AWS 설정 완료
+* skaffold dev - 로컬 배포
+* skaffold run -p prod - 클라우드 운영배포 설정
+* 관련 yaml파일 수정 및 위치 옮김
+* RDS는 아직 연결 안함
+
+</details>
+
+<details>
+<summary><strong>2025.11.25 업데이트 사항</strong></summary>
+
 * 개발자 1명 영입
 * Docker파일 오류 수정
 * 구성도 업데이트(향후 계획 반영)

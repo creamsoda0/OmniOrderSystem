@@ -1,0 +1,10 @@
+# k8s/charts/order-service/values-prod.yaml
+
+# [핵심] AWS 환경 정의 -> Eureka 꺼짐
+spring:
+  profiles:
+    active: prod
+
+# (선택) AWS RDS 주소로 덮어쓰기 (필요할 때 주석 해제해서 쓰세요)
+# database:
+#   url: "jdbc:postgresql://[AWS-RDS-ENDPOINT]:5432/omnidb"

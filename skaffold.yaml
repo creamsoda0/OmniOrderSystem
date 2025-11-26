@@ -1,0 +1,82 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: omni-order-project
+
+# ===========================
+# 1. 기본 설정 (Local)
+# ===========================
+build:
+  artifacts:
+    - image: creamdocker/order-service
+      context: ./Order-Service
+      docker: { dockerfile: Dockerfile }
+    - image: creamdocker/product-service
+      context: ./Product-Service
+      docker: { dockerfile: Dockerfile }
+    - image: creamdocker/message-service
+      context: ./message-service
+      docker: { dockerfile: Dockerfile }
+
+deploy:
+  helm:
+    releases:
+      - name: order-service
+        chartPath: ./k8s/charts/order-service
+        valuesFiles: [./k8s/charts/order-service/values.yaml]
+        # [중요] values.yaml의 'image' 키값 전체를, 방금 빌드한 이미지로 교체
+        artifactOverrides:
+          image: creamdocker/order-service
+
+      - name: product-service
+        chartPath: ./k8s/charts/product-service
+        valuesFiles: [./k8s/charts/product-service/values.yaml]
+        artifactOverrides:
+          image: creamdocker/product-service
+
+      - name: message-service
+        chartPath: ./k8s/charts/message-service
+        valuesFiles: [./k8s/charts/message-service/values.yaml]
+        artifactOverrides:
+          image: creamdocker/message-service
+
+# ===========================
+# 2. 프로필 설정 (AWS)
+# ===========================
+profiles:
+  - name: prod
+    build:
+      artifacts:
+        # AWS ECR 주소로 매핑 (본인 계정 ID 입력 필수)
+        - image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/order-service
+          context: ./Order-Service
+          docker: { dockerfile: Dockerfile }
+        - image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/product-service
+          context: ./Product-Service
+          docker: { dockerfile: Dockerfile }
+        - image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/message-service
+          context: ./message-service
+          docker: { dockerfile: Dockerfile }
+
+    deploy:
+      helm:
+        releases:
+          - name: order-service
+            chartPath: ./k8s/charts/order-service
+            # [중요] prod용 파일 사용
+            valuesFiles: [./k8s/charts/order-service/values-prod.yaml]
+            # values.yaml의 'image' 키를 ECR 주소 이미지로 덮어쓰기
+            artifactOverrides:
+              image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/order-service
+
+          - name: product-service
+            chartPath: ./k8s/charts/product-service
+            valuesFiles: [./k8s/charts/product-service/values-prod.yaml]
+            artifactOverrides:
+              image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/product-service
+
+          - name: message-service
+            chartPath: ./k8s/charts/message-service
+            valuesFiles: [./k8s/charts/message-service/values-prod.yaml]
+            artifactOverrides:
+              image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/message-service

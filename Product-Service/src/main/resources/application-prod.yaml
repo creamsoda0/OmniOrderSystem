@@ -1,0 +1,12 @@
+# application-prod.yml
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+# [AWS 환경: Eureka 끄기]
+eureka:
+  client:
+    enabled: false  # 핵심: Eureka 클라이언트 기능 자체를 꺼버림
+    register-with-eureka: false
+    fetch-registry: false

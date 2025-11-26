@@ -11,3 +11,8 @@ database:
   url: "jdbc:postgresql://postgres-service:5432/omnidb"
   username: "postgres"
   password: "1234"
+
+# [추가] 로컬 환경 정의
+spring:
+  profiles:
+    active: local
