@@ -19,27 +19,37 @@ build:
       docker: { dockerfile: Dockerfile }
 
 deploy:
+  # [1] 일반 YAML 파일 배포 (Eureka, DB, Redis 등)
+  kubectl:
+    manifests:
+      - ./k8s/eureka-deployment.yaml
+      - ./k8s/database-deployment.yaml # (로컬 DB도 필요하다면 추가)
+      - ./k8s/redis-deployment.yaml    # (로컬 Redis도 필요하다면 추가)
+      - ./k8s/ingress.yaml
+
+  # [2] Helm 차트 배포 (우리가 만든 서비스들)
   helm:
     releases:
       - name: order-service
-        chartPath: ./k8s/charts/order-service
-        valuesFiles: [./k8s/charts/order-service/values.yaml]
-        # [중요] values.yaml의 'image' 키값 전체를, 방금 빌드한 이미지로 교체
+        chartPath: ./k8s/order-chart
+        valuesFiles: [./k8s/order-chart/values.yaml]
         artifactOverrides:
           image: creamdocker/order-service
+        skipBuildDependencies: true
 
       - name: product-service
-        chartPath: ./k8s/charts/product-service
-        valuesFiles: [./k8s/charts/product-service/values.yaml]
+        chartPath: ./k8s/product-chart
+        valuesFiles: [./k8s/product-chart/values.yaml]
         artifactOverrides:
           image: creamdocker/product-service
+        skipBuildDependencies: true
 
       - name: message-service
-        chartPath: ./k8s/charts/message-service
-        valuesFiles: [./k8s/charts/message-service/values.yaml]
+        chartPath: ./k8s/message-chart
+        valuesFiles: [./k8s/message-chart/values.yaml]
         artifactOverrides:
           image: creamdocker/message-service
-
+        skipBuildDependencies: true
 # ===========================
 # 2. 프로필 설정 (AWS)
 # ===========================
@@ -64,19 +74,19 @@ profiles:
           - name: order-service
             chartPath: ./k8s/charts/order-service
             # [중요] prod용 파일 사용
-            valuesFiles: [./k8s/charts/order-service/values-prod.yaml]
+            valuesFiles: [./k8s/order-chart/values.yaml]
             # values.yaml의 'image' 키를 ECR 주소 이미지로 덮어쓰기
             artifactOverrides:
               image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/order-service
 
           - name: product-service
             chartPath: ./k8s/charts/product-service
-            valuesFiles: [./k8s/charts/product-service/values-prod.yaml]
+            valuesFiles: [./k8s/product-chart/values.yaml]
             artifactOverrides:
               image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/product-service
 
           - name: message-service
             chartPath: ./k8s/charts/message-service
-            valuesFiles: [./k8s/charts/message-service/values-prod.yaml]
+            valuesFiles: [./k8s/message-chart/values.yaml]
             artifactOverrides:
               image: 414813661603.dkr.ecr.ap-northeast-2.amazonaws.com/message-service

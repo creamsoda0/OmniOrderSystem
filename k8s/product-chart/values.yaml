@@ -5,7 +5,7 @@ image: creamdocker/product-service
 
 service:
   name: product-service
-  port: 8081
+  port: 8082
 
 database:
   url: "jdbc:postgresql://postgres-service:5432/omnidb"

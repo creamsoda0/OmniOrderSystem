@@ -5,25 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01c5d3f0-968d-455d-9f7c-148de4e155c2" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Order-Service/src/main/resources/application-prod.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Product-Service/src/main/resources/application-prod.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/message-chart/values-prod.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/order-chart/values-prod.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/product-chart/values-prod.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message-service/src/main/resources/application-prod.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/service/OrderProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kafka-deploy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message-service/src/main/java/com/omni/order/service/NotificationConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/dto/OrderCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/java/com/omni/order/dto/OrderCreationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Order-Service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Service/src/main/resources/db/migration/V1__init_orders.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Service/src/main/resources/db/migration/V1__init_orders.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/java/com/omni/product/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product-Service/src/main/resources/db/migration/V1__init_products.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Service/src/main/resources/db/migration/V1__init_products.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/eureka-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/eureka-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/ingress.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/message-chart/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/message-chart/Chart.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/k8s/message-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/message-chart/templates/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/message-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/message-chart/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/order-chart/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/Chart.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/k8s/order-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/templates/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/order-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/order-chart/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/product-chart/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/product-chart/Chart.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/k8s/product-chart/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/product-chart/templates/deployment.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/k8s/product-chart/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/product-chart/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/skaffold.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/message-service/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/message-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/message-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +50,7 @@
       <recent name="C:\Springproject\OmniOrderProject\k8s\prod" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Springproject\OmniOrderProject\k8s\order-chart" />
       <recent name="C:\Springproject\OmniOrderProject" />
     </key>
   </component>

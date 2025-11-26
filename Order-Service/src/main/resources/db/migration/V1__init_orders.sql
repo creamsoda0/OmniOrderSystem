@@ -1,18 +1,31 @@
--- 주문 테이블 생성 (테이블 명을 orders로 지정)
+-- 기존 테이블 삭제 (깔끔하게 다시 시작)
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
 
 CREATE TABLE orders (
-    order_id SERIAL PRIMARY KEY,         -- 자동 증가 ID
-    customer_name VARCHAR(100) NOT NULL, -- 주문자명 (실제로는 user_id 등을 사용)
-    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 주문 일시
-    status VARCHAR(20) DEFAULT 'PENDING', -- 주문 상태 (PENDING, COMPLETED, CANCELLED 등)
-    total_amount NUMERIC(10, 2) DEFAULT 0 -- 총 주문 금액
+    -- [1] 매핑: private Long orderId
+    order_id BIGSERIAL PRIMARY KEY,
+
+    -- [2] 매핑: private Long productId
+    product_id BIGINT NOT NULL,
+
+    -- [3] 매핑: private Integer quantity
+    quantity INTEGER NOT NULL,
+
+    -- [4] 매핑: private Integer totalPrice
+    -- (자바가 totalPrice이므로, SQL은 total_price여야 함)
+    total_price INTEGER NOT NULL,
+
+    -- [5] 매핑: private String orderStatus
+    -- (자바가 orderStatus이므로, SQL은 order_status여야 함)
+    order_status VARCHAR(50),
+
+    -- [6] 매핑: private LocalDateTime createdAt
+    -- (자바가 createdAt이므로, SQL은 created_at이어야 함)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE order_items (
-    item_id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES orders(order_id) ON DELETE CASCADE,
-    product_id INTEGER REFERENCES products(product_id),
-    quantity INTEGER NOT NULL CHECK (quantity > 0), -- 주문 수량
-    unit_price NUMERIC(10, 2) NOT NULL              -- 주문 시점의 가격 (가격 변동 대비)
-);
--- (참고) 만약 외래키(FK)를 걸고 싶다면 나중에 V2__add_fk.sql 같은 파일을 만들어서 추가하면 됩니다.
+-- 초기 데이터 (테스트용)
+-- 상품ID 1번을 2개 주문했고, 총 가격은 20000원, 상태는 PENDING
+INSERT INTO orders (product_id, quantity, total_price, order_status)
+VALUES (1, 2, 20000, 'PENDING');

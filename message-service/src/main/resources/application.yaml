@@ -43,6 +43,15 @@ spring:
       port: 6379
 
 # --- [ 최상위 설정 블록: spring 블록과 동일 레벨 ] ---
+  # kafka 설정
+  kafka:
+    # Apache Kafka Pod의 내부 도메인 주소
+    bootstrap-servers: my-kafka-0.my-kafka.default.svc.cluster.local:9092
+
+    # (Consumer 설정 - message-service에만 필수)
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: latest
 
 server:
   port: 8083

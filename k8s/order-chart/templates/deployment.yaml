@@ -34,3 +34,6 @@ spec:
               value: "{{ .Values.database.password }}"
             - name: SPRING_JPA_DATABASE_PLATFORM
               value: "org.hibernate.dialect.PostgreSQLDialect"
+            # [수정] 맨 뒤에 -Dserver.servlet.context-path=/ 추가 (띄어쓰기 주의!)
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Deureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/eureka/ -Deureka.instance.prefer-ip-address=true -Dserver.servlet.context-path=/"

@@ -1,8 +1,19 @@
+DROP TABLE IF EXISTS products;
+
 CREATE TABLE products (
-    product_id SERIAL PRIMARY KEY,       -- 자동 증가 ID
-    name VARCHAR(100) NOT NULL,          -- 상품명
-    description TEXT,                    -- 상품 설명
-    price NUMERIC(10, 2) NOT NULL,       -- 가격 (소수점 2자리까지)
-    stock_quantity INTEGER DEFAULT 0,    -- 재고 수량
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 등록일
+    -- [1] 매핑: private Long productId
+    product_id BIGSERIAL PRIMARY KEY,
+
+    -- [2] 매핑: private String productName
+    -- (스프링이 productName -> product_name으로 찾습니다)
+    product_name VARCHAR(100) NOT NULL,
+
+    -- [3] 매핑: private Integer stock
+    stock INTEGER DEFAULT 0,
+
+    -- [4] 매핑: private Integer price
+    price INTEGER NOT NULL
 );
+
+-- 초기 데이터 넣기 (테스트용)
+INSERT INTO products (product_name, stock, price) VALUES ('Test Product', 100, 10000);

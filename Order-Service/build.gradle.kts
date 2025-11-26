@@ -62,6 +62,9 @@ dependencies {
 
     // 💡 Swagger (OpenAPI 3) 의존성 추가
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+
+    // kafaka 의존성 설치
+    implementation ("org.springframework.kafka:spring-kafka")
 }
 
 tasks.withType<JavaCompile> { // ✅ Kotlin DSL: '<' 와 '>'를 사용하여 타입을 명시
